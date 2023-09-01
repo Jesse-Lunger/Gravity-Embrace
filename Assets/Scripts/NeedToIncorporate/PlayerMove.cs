@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
 
+    //components
+    public Transform vCamera;
     private Rigidbody rb;
+
+    //constants
     public float movSpd = 1f;
     public float groundSpd = 10f;
     public float gravity = 5f;
@@ -14,28 +18,29 @@ public class PlayerMove : MonoBehaviour
     public float airSpd = 2f;
     public float turnSpd = 1f;
     public float jumpHeight = 10f;
-    private float movHor;
-    private float movVer;
-    Vector3 movVec;
+    public float jumpTimer = 0.5f;
+    private float timer = 0f;
 
+    //conditions
+    private bool isGrounded;
     private Vector3 orientVec = Vector3.down;
     public GravityShift gs;
-
     private bool doJump = false;
     private bool stopJump = false;
     private bool startTimer = false;
-    public float jumpTimer = 0.5f;
-    private float timer = 0f;
     private bool doForce = false;
     private bool noForce = true;
+    private bool shiftCamera = false;
 
+
+    //Player Movement Variables
+    private float movHor;
+    private float movVer;
+    Vector3 movVec;
     public float forceMass = 1;
     private float forceFact = 1f;
     private float norMass;
-
     private bool key = true;
-    public Transform vCamera;
-    private bool shiftCamera = false;
 
     /*
     axisState is an array used to decide the player's movement in regards to the world's axis values.
@@ -56,8 +61,8 @@ public class PlayerMove : MonoBehaviour
     4 = the axis is not in used
 
     */
-    private int[] axisState;
-    private bool[] axisFreezeRot;
+    private int[] axisState = new int[] { 0, 4, 2 };
+    private bool[] axisFreezeRot = new bool[] {true, false, true};
 
     // Start is called before the first frame update
     void Start()
@@ -66,15 +71,10 @@ public class PlayerMove : MonoBehaviour
         norMass = rb.mass;
         gravityAmt = gravity;
         timer = jumpTimer;
+
+        // gravity shift is imported class
         orientVec = gs.getOrientation();
-        axisState = new int[3];
-        axisState[0] = 0;
-        axisState[1] = 4;
-        axisState[2] = 2;
-        axisFreezeRot = new bool[3];
-        axisFreezeRot[0] = true;
-        axisFreezeRot[1] = false;
-        axisFreezeRot[2] = true;
+
         //rotVec = new Vector3(0f, 0.0001f, 0f);
 
     }
@@ -85,10 +85,14 @@ public class PlayerMove : MonoBehaviour
         shiftCamera = true;
     }
 
+
+    // On Move Built in Unity function
     public void OnMove(InputValue input)
     {
         Vector2 inputVec = input.Get<Vector2>();
         movVec = orientMove(inputVec.x, inputVec.y);
+        Debug.Log(inputVec);
+
     }
 
     public void setAxisState(int index, int state)
@@ -116,9 +120,9 @@ public class PlayerMove : MonoBehaviour
 
     public void readAxisState()
     {
-        Debug.Log("X = " + axisState[0]);
-        Debug.Log("Y = " + axisState[1]);
-        Debug.Log("Z = " + axisState[2]);
+        // Debug.Log("X = " + axisState[0]);
+        // Debug.Log("Y = " + axisState[1]);
+        // Debug.Log("Z = " + axisState[2]);
     }
 
     private float readAxisState(int axisNum, float movHor, float movVer)
@@ -202,66 +206,79 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             readAxisState();
-            Debug.Log("movVec = " + movVec);
-            Debug.Log("orientVec * -1 = " + orientVec * -1);
+            // Debug.Log("movVec = " + movVec);
+            // Debug.Log("orientVec * -1 = " + orientVec * -1);
         }
     }
 
     void Debugger(string quote, Vector3 a, Vector3 b)
     {
-        Debug.Log(quote + ": " + Vector3.Cross(a, b));
+        // Debug.Log(quote + ": " + Vector3.Cross(a, b));
     }
+
+    private void processPlanarMovement(){
+        // Determines Player Move speed in air or on ground
+        float modSpd;
+        if (isGrounded){
+            modSpd = groundSpd;
+        }
+        else {
+            modSpd = airSpd;
+        }
+        rb.AddForce(movVec * movSpd * modSpd * rb.mass * forceFact);
+        Debug.Log(movSpd * modSpd * rb.mass * forceFact);
+    }
+
+    private void processPlayerRotation3dPerson(){
+        if (movVec != Vector3.zero){
+            Quaternion newRot = Quaternion.LookRotation(movVec, orientVec * -1);
+            transform.rotation = newRot;
+        }
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        isGrounded = GroundCheck();
         if (key)
         {
-            bool isGround = GroundCheck();
-            float modSpd = 0f;
+            // orientVec = gs.getOrientation();
+            processPlanarMovement();
+            // processPlayerRotation3dPerson();
 
-            if (isGround)
-                modSpd = groundSpd;
-            else
-                modSpd = airSpd;
-            orientVec = gs.getOrientation();
-            rb.AddForce(movVec * movSpd * modSpd * rb.mass * forceFact);
-            Debug.Log(movSpd * modSpd * rb.mass * forceFact);
-            if (movVec != Vector3.zero)
-            {
-                Quaternion newRot = Quaternion.LookRotation(movVec, orientVec * -1);
-                transform.rotation = newRot;
-            }
-            if (shiftCamera)
-            {
-                vCamera.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-                shiftCamera = false;
-            }
-            if (doJump && isGround)
-            {
-                performJump();
-                startTimer = true;
-                doJump = false;
-            }
-            if (stopJump)
-            {
-                releaseJump();
-                timer = jumpTimer;
-                startTimer = false;
-                stopJump = false;
-            }
-            if (doForce)
-            {
-                forceFact = 1.7f;
-                rb.mass = forceMass;
-                rb.AddForce(orientVec * gravity * forceMass * 3);
-                //doForce = false;
-            }
-            if (!doForce)
-            {
-                forceFact = 1f;
-                rb.mass = norMass;
-            }
+            // if (shiftCamera)
+            // {
+            //     vCamera.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            //     shiftCamera = false;
+            // }
+
+
+            // if (doJump && isGrounded)
+            // {
+            //     performJump();
+            //     startTimer = true;
+            //     doJump = false;
+            // }
+            // if (stopJump)
+            // {
+            //     releaseJump();
+            //     timer = jumpTimer;
+            //     startTimer = false;
+            //     stopJump = false;
+            // }
+            // if (doForce)
+            // {
+            //     forceFact = 1.7f;
+            //     rb.mass = forceMass;
+            //     rb.AddForce(orientVec * gravity * forceMass * 3);
+            //     //doForce = false;
+            // }
+            // if (!doForce)
+            // {
+            //     forceFact = 1f;
+            //     rb.mass = norMass;
+            // }
             rb.AddForce(orientVec * gravityAmt);
         }
     }

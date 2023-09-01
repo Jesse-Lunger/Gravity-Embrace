@@ -20,11 +20,12 @@ public class GravityShift : MonoBehaviour
     {
         orientVec = Vector3.down;
         rb = GetComponent<Rigidbody>();
+        pm = GetComponent<PlayerMove>();
     }
 
     public Vector3 getOrientation() {
-        //Vector3 estVec = Vector3.Cross(transform.forward, transform.right * -1);
-        //orientVec = new Vector3(Mathf.Round(estVec.x), Mathf.Round(estVec.y), Mathf.Round(estVec.z));
+        Vector3 estVec = Vector3.Cross(transform.forward, transform.right * -1);
+        orientVec = new Vector3(Mathf.Round(estVec.x), Mathf.Round(estVec.y), Mathf.Round(estVec.z));
         return orientVec;
     }
     
