@@ -22,6 +22,8 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        // Debug.Log(isGrounded);
+
 
     }
 
@@ -37,12 +39,19 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = -2f;
         }
         controller.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
     }
 
     public void jump(){
         if (isGrounded){
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+
         }
+    }
+
+    public void gravityShift(){
+        transform.Rotate(Vector3.right, 180f);
+        transform.Rotate(Vector3.up, 180f);
+        gravity *= -1;            
+        jumpHeight *= 1;
     }
 }
