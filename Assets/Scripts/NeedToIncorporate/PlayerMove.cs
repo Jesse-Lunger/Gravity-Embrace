@@ -53,6 +53,7 @@ public class PlayerMove : MonoBehaviour
     1 = Correspond to the y axis
     2 = Correspond to the z axis
 
+
     Values
     0 = the player's position increases in axis value when the player presses up (Horizontal movement).
     1 = the player's position decreases in axis value when the player presses right (Horizontal movement).
@@ -61,7 +62,8 @@ public class PlayerMove : MonoBehaviour
     4 = the axis is not in used
 
     */
-    private int[] axisState = new int[] { 0, 4, 2 };
+    
+    private int[] axisState = new int[] { 0, 4, 2 }; //
     private bool[] axisFreezeRot = new bool[] {true, false, true};
 
     // Start is called before the first frame update
@@ -192,6 +194,8 @@ public class PlayerMove : MonoBehaviour
     {
         // Approach ground check with using a ray through a RayCast
         RaycastHit hit;
+        //float height = GetHeight(characterController);
+
         bool groundTest = Physics.Raycast(transform.position + (orientVec * -1), orientVec, out hit, 1.13f);
         if (groundTest)
             return true;

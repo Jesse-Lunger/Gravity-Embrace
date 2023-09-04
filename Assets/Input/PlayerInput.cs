@@ -55,9 +55,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""GravityShift"",
+                    ""name"": ""GravityShiftUp"",
                     ""type"": ""Button"",
                     ""id"": ""fef4bccc-2e7a-4ab5-84b2-1e60018cd045"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GravityShiftDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""37430bd7-6278-4bc9-a5d1-4a28282873c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GravityShiftRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""07c6766b-a767-4fa6-8764-e47296f2817d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GravityShiftLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""d60df79c-201f-4845-9c64-3dc45f99ceb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GravityShiftForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""851ec0cc-6d7c-4773-acfd-eb95a00678ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GravityShiftBackward"",
+                    ""type"": ""Button"",
+                    ""id"": ""69f6350f-f24b-4009-b972-ab610fd3463e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -222,11 +267,66 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""340f2392-810b-4307-be04-1a7733d2efad"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""GravityShift"",
+                    ""action"": ""GravityShiftUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a24f46c-935c-4700-9e40-750d30ec32af"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityShiftDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9be753e-52c6-47fd-aca2-45f398cebc05"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityShiftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac46ee69-25f8-4908-bc2f-eabe7cbd70b1"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityShiftLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e6a9643-2b65-4f30-b006-68aa7160316a"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityShiftForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6bdefc2-ca08-4d73-8d05-990747a676ef"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityShiftBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -240,7 +340,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
-        m_OnFoot_GravityShift = m_OnFoot.FindAction("GravityShift", throwIfNotFound: true);
+        m_OnFoot_GravityShiftUp = m_OnFoot.FindAction("GravityShiftUp", throwIfNotFound: true);
+        m_OnFoot_GravityShiftDown = m_OnFoot.FindAction("GravityShiftDown", throwIfNotFound: true);
+        m_OnFoot_GravityShiftRight = m_OnFoot.FindAction("GravityShiftRight", throwIfNotFound: true);
+        m_OnFoot_GravityShiftLeft = m_OnFoot.FindAction("GravityShiftLeft", throwIfNotFound: true);
+        m_OnFoot_GravityShiftForward = m_OnFoot.FindAction("GravityShiftForward", throwIfNotFound: true);
+        m_OnFoot_GravityShiftBackward = m_OnFoot.FindAction("GravityShiftBackward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,7 +410,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Look;
-    private readonly InputAction m_OnFoot_GravityShift;
+    private readonly InputAction m_OnFoot_GravityShiftUp;
+    private readonly InputAction m_OnFoot_GravityShiftDown;
+    private readonly InputAction m_OnFoot_GravityShiftRight;
+    private readonly InputAction m_OnFoot_GravityShiftLeft;
+    private readonly InputAction m_OnFoot_GravityShiftForward;
+    private readonly InputAction m_OnFoot_GravityShiftBackward;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -313,7 +423,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
-        public InputAction @GravityShift => m_Wrapper.m_OnFoot_GravityShift;
+        public InputAction @GravityShiftUp => m_Wrapper.m_OnFoot_GravityShiftUp;
+        public InputAction @GravityShiftDown => m_Wrapper.m_OnFoot_GravityShiftDown;
+        public InputAction @GravityShiftRight => m_Wrapper.m_OnFoot_GravityShiftRight;
+        public InputAction @GravityShiftLeft => m_Wrapper.m_OnFoot_GravityShiftLeft;
+        public InputAction @GravityShiftForward => m_Wrapper.m_OnFoot_GravityShiftForward;
+        public InputAction @GravityShiftBackward => m_Wrapper.m_OnFoot_GravityShiftBackward;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -332,9 +447,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @GravityShift.started += instance.OnGravityShift;
-            @GravityShift.performed += instance.OnGravityShift;
-            @GravityShift.canceled += instance.OnGravityShift;
+            @GravityShiftUp.started += instance.OnGravityShiftUp;
+            @GravityShiftUp.performed += instance.OnGravityShiftUp;
+            @GravityShiftUp.canceled += instance.OnGravityShiftUp;
+            @GravityShiftDown.started += instance.OnGravityShiftDown;
+            @GravityShiftDown.performed += instance.OnGravityShiftDown;
+            @GravityShiftDown.canceled += instance.OnGravityShiftDown;
+            @GravityShiftRight.started += instance.OnGravityShiftRight;
+            @GravityShiftRight.performed += instance.OnGravityShiftRight;
+            @GravityShiftRight.canceled += instance.OnGravityShiftRight;
+            @GravityShiftLeft.started += instance.OnGravityShiftLeft;
+            @GravityShiftLeft.performed += instance.OnGravityShiftLeft;
+            @GravityShiftLeft.canceled += instance.OnGravityShiftLeft;
+            @GravityShiftForward.started += instance.OnGravityShiftForward;
+            @GravityShiftForward.performed += instance.OnGravityShiftForward;
+            @GravityShiftForward.canceled += instance.OnGravityShiftForward;
+            @GravityShiftBackward.started += instance.OnGravityShiftBackward;
+            @GravityShiftBackward.performed += instance.OnGravityShiftBackward;
+            @GravityShiftBackward.canceled += instance.OnGravityShiftBackward;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -348,9 +478,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @GravityShift.started -= instance.OnGravityShift;
-            @GravityShift.performed -= instance.OnGravityShift;
-            @GravityShift.canceled -= instance.OnGravityShift;
+            @GravityShiftUp.started -= instance.OnGravityShiftUp;
+            @GravityShiftUp.performed -= instance.OnGravityShiftUp;
+            @GravityShiftUp.canceled -= instance.OnGravityShiftUp;
+            @GravityShiftDown.started -= instance.OnGravityShiftDown;
+            @GravityShiftDown.performed -= instance.OnGravityShiftDown;
+            @GravityShiftDown.canceled -= instance.OnGravityShiftDown;
+            @GravityShiftRight.started -= instance.OnGravityShiftRight;
+            @GravityShiftRight.performed -= instance.OnGravityShiftRight;
+            @GravityShiftRight.canceled -= instance.OnGravityShiftRight;
+            @GravityShiftLeft.started -= instance.OnGravityShiftLeft;
+            @GravityShiftLeft.performed -= instance.OnGravityShiftLeft;
+            @GravityShiftLeft.canceled -= instance.OnGravityShiftLeft;
+            @GravityShiftForward.started -= instance.OnGravityShiftForward;
+            @GravityShiftForward.performed -= instance.OnGravityShiftForward;
+            @GravityShiftForward.canceled -= instance.OnGravityShiftForward;
+            @GravityShiftBackward.started -= instance.OnGravityShiftBackward;
+            @GravityShiftBackward.performed -= instance.OnGravityShiftBackward;
+            @GravityShiftBackward.canceled -= instance.OnGravityShiftBackward;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -373,6 +518,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnGravityShift(InputAction.CallbackContext context);
+        void OnGravityShiftUp(InputAction.CallbackContext context);
+        void OnGravityShiftDown(InputAction.CallbackContext context);
+        void OnGravityShiftRight(InputAction.CallbackContext context);
+        void OnGravityShiftLeft(InputAction.CallbackContext context);
+        void OnGravityShiftForward(InputAction.CallbackContext context);
+        void OnGravityShiftBackward(InputAction.CallbackContext context);
     }
 }
