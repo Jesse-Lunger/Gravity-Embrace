@@ -59,7 +59,7 @@ public class PlayerMotor : MonoBehaviour
             // playerVelocity = playerVelocity - gravityForceVector + gravityWhenGrounded;
         }
 
-        Debug.Log(playerVelocity);        
+        // Debug.Log(playerVelocity);        
         controller.Move(playerVelocity * Time.deltaTime);
     }
 

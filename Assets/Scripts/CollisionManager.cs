@@ -57,7 +57,7 @@ public class CollisionManager : MonoBehaviour
         // hit will contain the distance so check if it corresponds to the object on plane
         targetWall = hitFront.transform;
         if (targetWall != null){
-            Debug.Log(targetWall.tag);
+            // Debug.Log(targetWall.tag);
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private PlayerInput.OnFootActions onFoot;
+    public PlayerInput.OnFootActions onFoot;
 
     // PlayerInput.OnFootActions onFootActions = playerInput.onFoot;
     // PlayerInput.OnFootActions.GravityShift gravityShift = onFootActions.gravityShift;
@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerMotor motor;
     private PlayerLook look;
+
 
     void Awake()
     {
@@ -24,9 +25,9 @@ public class InputManager : MonoBehaviour
 
         //performed/started/canceled
         onFoot.Jump.performed += ctx => motor.jump();
+
         onFoot.GravityShiftUp.performed += ctx => motor.shiftUp();
         onFoot.GravityShiftDown.performed += ctx => motor.shiftDown();
-
         onFoot.GravityShiftLeft.performed += ctx => motor.shiftLeft();
         onFoot.GravityShiftRight.performed += ctx => motor.shiftRight();
         onFoot.GravityShiftForward.performed += ctx => motor.shiftForward();
@@ -43,8 +44,6 @@ public class InputManager : MonoBehaviour
     {
         // Call ProcessMove with the input value from onFoot.Movement.ReadValue<Vector2>()
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-
-
     }
 
     void LateUpdate()
