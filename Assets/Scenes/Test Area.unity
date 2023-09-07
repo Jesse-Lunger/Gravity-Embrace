@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -913,7 +913,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: caef87d8dd4f62c44ba25b6b3ff86297, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e93210977df0459908c3b55229150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: use keypad
+  promptMessage: use keypad[E]
   door: {fileID: 1746840269}
 --- !u!65 &779258701
 BoxCollider:
@@ -2509,7 +2509,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: caef87d8dd4f62c44ba25b6b3ff86297, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3068,7 +3068,7 @@ Transform:
   m_GameObject: {fileID: 1732824059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.81, y: 5.87, z: -34.9}
+  m_LocalPosition: {x: -3.81, y: 5.87, z: -36.88}
   m_LocalScale: {x: 1, y: 4.2106385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3749,11 +3749,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023361145794589658, guid: 4bffd54d815626f4db271fd352603544, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4067409040288616255, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: m_IsActive
@@ -3781,7 +3797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721670003199588001, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: field of view
-      value: 60
+      value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: 4721670003199588001, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: m_FOVAxisMode
@@ -3797,7 +3813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721670003199588001, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: near clip plane
-      value: 1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4721670003199588001, guid: 4bffd54d815626f4db271fd352603544, type: 3}
       propertyPath: m_projectionMatrixMode
@@ -3863,8 +3879,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4787475826813275763, guid: 4bffd54d815626f4db271fd352603544, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
